@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Auth } from '../../../core/services/auth';
 import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { inject } from '@angular/core';
 })
 export class Login {
   private authService = inject(Auth);
+  private router = inject(Router);
 
   username = '';
   password = '';
@@ -24,6 +26,7 @@ export class Login {
         console.log(res);
         localStorage.setItem('access', res.access);
         localStorage.setItem('refresh', res.refresh);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.log(err);
