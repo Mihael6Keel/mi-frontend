@@ -1,9 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
+import { Auth } from '../../core/services/auth';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {}
+export class Home implements OnInit {
+  private auth = inject(Auth);
+  user: any = null;
+
+  ngOnInit() {
+    this.auth.me().subscribe({
+      next: (res: any) => {
+        this.user = res;
+        console.log(this.user);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+}

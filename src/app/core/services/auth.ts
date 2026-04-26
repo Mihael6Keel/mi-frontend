@@ -11,4 +11,8 @@ export class Auth {
   login(data: { username: string; password: string }) {
     return this.http.post(`${this.apiUrl}/api/token/`, data);
   }
+
+  me() {
+    return this.http.get(`${this.apiUrl}/api/me/`);
+  }
 }
