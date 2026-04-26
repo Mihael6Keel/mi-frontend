@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal} from '@angular/core';
 import { Auth } from '../../core/services/auth';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Home implements OnInit {
   private auth = inject(Auth);
+  private router = inject(Router);
+
   user = signal<any>(null);
 
   ngOnInit() {
@@ -22,5 +25,10 @@ export class Home implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }

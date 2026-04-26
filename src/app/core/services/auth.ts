@@ -15,4 +15,9 @@ export class Auth {
   me() {
     return this.http.get(`${this.apiUrl}/api/me/`);
   }
+
+  logout() {
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+  } 
 }
