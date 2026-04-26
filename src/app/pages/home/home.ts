@@ -1,4 +1,4 @@
-import { Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { Auth } from '../../core/services/auth';
 import { CommonModule } from '@angular/common';
 
@@ -10,13 +10,13 @@ import { CommonModule } from '@angular/common';
 })
 export class Home implements OnInit {
   private auth = inject(Auth);
-  user: any = null;
+  user = signal<any>(null);
 
   ngOnInit() {
     this.auth.me().subscribe({
       next: (res: any) => {
-        this.user = res;
         console.log(this.user);
+        this.user.set(res);
       },
       error: (err) => {
         console.error(err);

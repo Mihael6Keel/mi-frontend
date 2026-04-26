@@ -1,2 +1,7 @@
-<h2 *ngIf="user">Bienvenido {{ user.username }}</h2>
-<p *ngIf="!user">Cargando...</p>
+<!-- <pre>{{ user() | json }}</pre> -->
+
+<h2 *ngIf="user()">
+  Bienvenido,   <span>{{ user().username }}</span>
+</h2>
+
+<p *ngIf="!user()">Cargando...</p>
