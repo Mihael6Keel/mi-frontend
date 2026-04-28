@@ -5,4 +5,13 @@
   --light: #f9f9f9;
   --dark: #333;
   --white: #fff;
+  --background: #1e3a5f;
+  --color: #333;
+  --dash-primary: #2e7d32;
+  --dash-secondary: #43a047;
+  --dash-bg: #f1f8f4;
+  --dash-text: #1b5e20;
+  --dash-white: #ffffff;
+  --dash-muted: #6b7280;
+  --dash-danger: #e53935;
 }
